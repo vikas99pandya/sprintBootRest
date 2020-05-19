@@ -4,5 +4,7 @@ applications:
     memory: 2048M
     path: target/springbootdemo-0.0.1-SNAPSHOT.jar
     timeout: 80
+    env:
+      welcome.message: hi from CF
     routes:
       - route: myapp1arpita99pan.cfapps.io
