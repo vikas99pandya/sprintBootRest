@@ -76,6 +76,38 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>1.4.0</version>
+				<configuration>
+					<from>
+						<image>openjdk:11-jre-slim-stretch</image>
+					</from>
+					<to><!-- Normally u give here ur docker registry path like azure or aws registry -->
+						<image>myrepo</image>
+						<credHelper>osxkeychain</credHelper>
+						<tags>
+							<tag>my-test</tag>
+						</tags>
+					</to>
+					<container>
+						<jvmFlags>
+							<jvmFlag>-Xms256m</jvmFlag>
+							<jvmFlag>-Xdebug</jvmFlag>
+						</jvmFlags>
+						<mainClass>com.howtodoinjava.demo.SpringBootDemoApplication</mainClass>
+						<ports>
+							<port>8080</port>
+						</ports>
+						<labels>
+							<name>springbootjib</name>
+						</labels>
+						<format>Docker</format>
+						<useCurrentTimestamp>true</useCurrentTimestamp>
+					</container>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
